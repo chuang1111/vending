@@ -1,0 +1,21 @@
+# A function that gets the user's input of money and validates it
+def get_money():
+  money = input("Please enter the amount of money you have: $")
+  try:
+    money = float(money)
+    return money
+  except Exception as e:
+    print("Invalid Number. Try again.")
+    return get_money()
+
+# A function that displays the list of items and gets the user's choice of item
+def get_choice(inventory):
+  print(inventory.inventory_dict)
+  try:
+    user_selection = int(input("Please enter the number of the item you wish to purchase: "))
+    if 1 <= user_selection <= len(inventory.inventory_dict):
+      return list(inventory.inventory_dict.keys())[user_selection - 1]
+    else:
+      print("Invalid selection. Please choose a valid item number.")
+  except Exception as e:
+    print("Invalid input. Please enter a number.")
