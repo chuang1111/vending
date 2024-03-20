@@ -10,12 +10,10 @@ def get_money():
 
 # A function that displays the list of items and gets the user's choice of item
 def get_choice(inventory):
-  print(inventory.inventory_dict)
-  try:
-    user_selection = int(input("Please enter the number of the item you wish to purchase: "))
-    if 1 <= user_selection <= len(inventory.inventory_dict):
-      return list(inventory.inventory_dict.keys())[user_selection - 1]
-    else:
-      print("Invalid selection. Please choose a valid item number.")
-  except Exception as e:
-    print("Invalid input. Please enter a number.")
+  
+  choice = int(input("Please enter the number of the item you wish to purchase: "))
+  if choice in range(1,5):
+    return choice
+  else:
+    print("Invalid selection. Please select again (1-4).")
+    return get_choice(inventory)
